@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ namespace G19LCD
             var pixels = new byte[320 * 240 * 4];
 
             int f = 0;
-
+                
             var detectInputTask = Task.Run(() =>
             {
                 var monoButtons = new[]

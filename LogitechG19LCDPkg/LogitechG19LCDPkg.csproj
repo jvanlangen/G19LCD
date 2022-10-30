@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>LogitechG19LCDPkg</PackageId>
+    <Authors>Jeroen van Langen</Authors>
+    <Company>vanlangen.biz</Company>
+    <Product>Logitech G19 LCD Nuget Package</Product>
+    <Description>Use this package to draw the Logitech G19 LCD screen with a Graphics object. (GDI+ drawing surface)</Description>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="LogitechLcdEnginesWrapper.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="LogitechLcdEnginesWrapper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
