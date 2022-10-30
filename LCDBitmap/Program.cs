@@ -46,8 +46,6 @@ namespace G19LCD
             }
 
             DrawColors();
-
-//            Console.ReadLine();
         }
 
         private static void DrawColors()
@@ -78,7 +76,7 @@ namespace G19LCD
                 if (LogitechGSDK.LogiLcdIsConnected(LogitechGSDK.LOGI_LCD_TYPE_COLOR))
                 {
                     int i = 0;
-                    double ypos = 120 + (120 * Math.Sin(f / 15f));
+                    double ypos = 120 + (120 * Math.Sin(f / 5f));
 
                     for (int y = 0; y < 240; y++)
                         for (int x = 0; x < 320; x++)
