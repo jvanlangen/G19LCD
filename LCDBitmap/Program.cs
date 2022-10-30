@@ -55,10 +55,26 @@ namespace G19LCD
             var pixels = new byte[320 * 240 * 4];
 
             int f = 0;
-
+            var rnd = new Random();
             // draw colors loop
             while (true)
             {
+                using (var canvas = LogitechMonoLCD.GetCanvas())
+                {
+                    canvas.Graphics.Clear(Color.Black);
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        var x = rnd.Next(canvas.Width);
+                        var y = rnd.Next(canvas.Height);
+                        var w = rnd.Next(canvas.Width - x);
+                        var h = rnd.Next(canvas.Height - y);
+                        canvas.Graphics.DrawRectangle(Pens.White, new Rectangle(x, y, w, h));
+                    }
+                }
+
+
+
                 if (LogitechGSDK.LogiLcdIsConnected(LogitechGSDK.LOGI_LCD_TYPE_COLOR))
                 {
                     int i = 0;
@@ -75,11 +91,6 @@ namespace G19LCD
                     f++;
 
                     LogitechGSDK.LogiLcdColorSetBackground(pixels);
-                }
-
-                if (LogitechGSDK.LogiLcdIsConnected(LogitechGSDK.LOGI_LCD_TYPE_MONO))
-                {
-                    LogitechGSDK.LogiLcdMonoSetText(0, "bla bla");
                 }
 
                 LogitechGSDK.LogiLcdUpdate();
