@@ -30,36 +30,6 @@ namespace G19LCD
             }
         }
 
-        private struct LcdToggleButton
-        {
-            private bool _previousState;
-
-            public EventHandler CheckState()
-            {
-                var state = LogitechGSDK.LogiLcdIsButtonPressed(Key);
-
-                try
-                {
-                    if (_previousState != state)
-                    {
-                        if (state)
-                            return Down;
-                        else
-                            return Up;
-                    }
-                    return null;
-                }
-                finally
-                {
-                    _previousState = state;
-                }
-            }
-
-            public int Key;
-            public EventHandler Down;
-            public EventHandler Up;
-        }
-
         static LogitechMonoLCD()
         {
             if (!LogitechLCD.Initialized || !LogitechLCD.MonoLCDConnected)
@@ -128,7 +98,7 @@ namespace G19LCD
                     // check the button presses.
                     for (int i = 0; i < monoLCDButtons.Length; i++)
                     {
-                        var handler = monoLCDButtons[i].CheckState();
+                        var handler = monoLCDButtons[i].CheckButtonEvent();
                         if (handler != null)
                             handlers[count++] = handler;
                     }

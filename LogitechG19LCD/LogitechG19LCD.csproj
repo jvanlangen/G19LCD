@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="LCDMonoCanvas.cs" />
     <Compile Include="LCDColorCanvas.cs" />
+    <Compile Include="LcdToggleButton.cs" />
     <Compile Include="LogitechMonoLCD.cs" />
     <Compile Include="LogitechColorLCD.cs" />
     <Compile Include="LogitechGSDK.cs" />
